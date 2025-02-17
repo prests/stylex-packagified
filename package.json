@@ -1,0 +1,28 @@
+{
+  "name": "stylex-packagified",
+  "private": true,
+  "description": "Root workspace to test out stylex and its capabilities as a library.",
+  "homepage": "https://github.com/prests/stylex-packagified",
+  "author": {
+    "name": "Shayne Preston",
+    "email": "shayne.preston@protonmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prests/stylex-packagified.git"
+  },
+  "engines": {
+    "node": "^20 || ^22",
+    "pnpm": "^9"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stylex",
+    "npm",
+    "pnpm"
+  ],
+  "license": "MIT"
+}
