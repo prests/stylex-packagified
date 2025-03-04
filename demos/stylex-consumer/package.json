@@ -16,6 +16,7 @@
   "scripts": {
     "____ RUN COMMANDS ___": "",
     "dev": "vite",
+    "start": "vite preview",
     "____ BUILD COMMANDS ____": "",
     "build": "pnpm run clean:build && pnpm run build:main",
     "build:main": "vite build",
