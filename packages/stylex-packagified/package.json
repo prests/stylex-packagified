@@ -1,0 +1,90 @@
+{
+  "name": "stylex-packagified",
+  "version": "0.0.0",
+  "description": "Simple npm package testing stylex and its ability to be consumed via an npm package",
+  "homepage": "https://github.com/prests/stylex-packagified/tree/main/packages/stylex-packagified",
+  "author": {
+    "name": "Shayne Preston",
+    "email": "shayne.preston@protonmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prests/stylex-packagified.git",
+    "directory": "packages/stylex-packagified"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "next"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "*.md"
+  ],
+  "source": "./src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    },
+    "./tokens": {
+      "import": {
+        "types": "./dist/esm/tokens.stylex.d.ts",
+        "default": "./dist/esm/tokens.stylex.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "____ RUN COMMANDS ___": "",
+    "dev": "pnpm run build:esm:watch",
+    "____ BUILD COMMANDS ____": "",
+    "build": "pnpm run clean:build && pnpm run build:cjs && pnpm run build:esm && pnpm run build:verify",
+    "build:cjs": "tsup src/index.ts --format cjs --dts --outDir=./dist/cjs/ --tsconfig=./tsconfig.build-cjs.json",
+    "build:cjs:watch": "pnpm run build:cjs --watch",
+    "build:esm": "tsc -p tsconfig.build-esm.json",
+    "build:esm:watch": "pnpm run build:esm --watch",
+    "build:verify": "publint --strict && size-limit",
+    "____ LINTING/FORMATTING COMMANDS ____": "",
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "pnpm run lint --fix",
+    "format": "prettier --write .",
+    "format:verify": "prettier --list-different .",
+    "typecheck": "tsc -p ./tsconfig.json --noEmit",
+    "____ CLEAN COMMANDS ____": "",
+    "clean": "pnpm run clean:build && pnpm run clean:test",
+    "clean:build": "rimraf --glob ./dist ./legacy-types ./*.tgz",
+    "clean:test": "rimraf --glob ./coverage"
+  },
+  "dependencies": {
+    "@stylexjs/stylex": "^0.11.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "@stylexjs/stylex": "^0.11.0"
+  },
+  "size-limit": [
+    {
+      "path": "./dist/esm/index.js",
+      "import": "{}",
+      "limit": "20 B"
+    }
+  ],
+  "keywords": [
+    "stylex",
+    "npm",
+    "pnpm"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,3 @@
+{
+  "include": ["*.ts", "demos/*/*.ts", "demos/*/src", "packages/*/*.ts", "packages/*/src"]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "demo--stylex-consumer",
+  "private": true,
+  "description": "Demo stylex consuming in a CSR react app",
+  "homepage": "https://github.com/prests/stylex-packagified/tree/main/packages/stylex-packagified",
+  "author": {
+    "name": "Shayne Preston",
+    "email": "shayne.preston@protonmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prests/stylex-packagified.git",
+    "directory": "demos/stylex-consumer"
+  },
+  "type": "module",
+  "scripts": {
+    "____ RUN COMMANDS ___": "",
+    "dev": "vite",
+    "____ BUILD COMMANDS ____": "",
+    "build": "pnpm run clean:build && pnpm run build:main",
+    "build:main": "vite build",
+    "____ LINTING/FORMATTING COMMANDS ____": "",
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "pnpm run lint --fix",
+    "format": "prettier --write .",
+    "format:verify": "prettier --list-different .",
+    "typecheck": "tsc -p ./tsconfig.json --noEmit",
+    "____ CLEAN COMMANDS ____": "",
+    "clean": "pnpm run clean:build && pnpm run clean:test",
+    "clean:build": "rimraf --glob ./dist ./legacy-types ./*.tgz",
+    "clean:test": "rimraf --glob ./coverage"
+  },
+  "keywords": [
+    "stylex",
+    "pnpm",
+    "react"
+  ],
+  "dependencies": {
+    "@stylexjs/stylex": "^0.11.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "stylex-packagified": "workspace:^"
+  },
+  "devDependencies": {
+    "@stylex-extend/vite": "^0.7.1",
+    "@stylexjs/postcss-plugin": "^0.11.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "vite-plugin-stylex": "^0.13.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig-base.typecheck.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "declarationMap": true,
+    "target": "ES6",
+    "noEmit": false
+  },
+  "exclude": ["node_modules", "**/*.stories.*", "**/__tests__", "**/*.test.*"]
+}
