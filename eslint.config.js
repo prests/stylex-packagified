@@ -1,19 +1,19 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-import { includeIgnoreFile } from "@eslint/compat";
-import js from "@eslint/js";
-import ts from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import importPlugin from "eslint-plugin-import";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import react from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
-import globals from "globals";
+import { includeIgnoreFile } from '@eslint/compat';
+import js from '@eslint/js';
+import ts from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import importPlugin from 'eslint-plugin-import';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import globals from 'globals';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const gitignorePath = path.resolve(__dirname, ".gitignore");
+const gitignorePath = path.resolve(__dirname, '.gitignore');
 
 export default [
   includeIgnoreFile(gitignorePath),
@@ -21,15 +21,15 @@ export default [
   js.configs.recommended,
   {
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       parserOptions: {
         ecmaFeatures: { jsx: true },
       },
       globals: {
         ...globals.browser,
         ...globals.commonjs,
-        ...globals.es6,
+        ...globals.es2020,
       },
     },
   },
@@ -40,34 +40,27 @@ export default [
   {
     plugins: { import: importPlugin },
     settings: {
-      "import/internal-regex": "^@example/",
+      'import/internal-regex': '^@example/',
     },
     rules: {
-      "import/order": [
-        "error",
+      'import/order': [
+        'error',
         {
           named: true,
-          "newlines-between": "always",
+          'newlines-between': 'always',
           distinctGroup: true,
           warnOnUnassignedImports: true,
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "type",
-          ],
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'type'],
           pathGroups: [
             {
-              pattern: "@example/**",
-              group: "internal",
-              position: "before",
+              pattern: '@example/**',
+              group: 'internal',
+              position: 'before',
             },
           ],
           alphabetize: {
-            order: "asc",
-            orderImportKind: "asc",
+            order: 'asc',
+            orderImportKind: 'asc',
           },
         },
       ],
@@ -76,20 +69,20 @@ export default [
 
   // React and JSX accessibility configuration
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       react,
-      "react-hooks": reactHooks,
-      "jsx-a11y": jsxA11y,
+      'react-hooks': reactHooks,
+      'jsx-a11y': jsxA11y,
     },
     settings: {
-      react: { version: "detect" },
-      formComponents: ["Form"],
+      react: { version: 'detect' },
+      formComponents: ['Form'],
       linkComponents: [
-        { name: "Link", linkAttribute: "to" },
-        { name: "NavLink", linkAttribute: "to" },
+        { name: 'Link', linkAttribute: 'to' },
+        { name: 'NavLink', linkAttribute: 'to' },
       ],
-      "import/resolver": {
+      'import/resolver': {
         typescript: {},
       },
     },
@@ -97,8 +90,8 @@ export default [
 
   // TypeScript-specific configuration
   {
-    files: ["**/*.{ts,tsx}"],
-    plugins: { "@typescript-eslint": ts, import: importPlugin },
+    files: ['**/*.{ts,tsx}'],
+    plugins: { '@typescript-eslint': ts, import: importPlugin },
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -107,9 +100,9 @@ export default [
       },
     },
     settings: {
-      "import/internal-regex": "^~/",
-      "import/resolver": {
-        node: { extensions: [".ts", ".tsx"] },
+      'import/internal-regex': '^~/',
+      'import/resolver': {
+        node: { extensions: ['.ts', '.tsx'] },
         typescript: { alwaysTryTypes: true },
       },
     },
@@ -117,31 +110,24 @@ export default [
 
   // Storybook-specific overrides
   {
-    files: ["*.stories.*"],
+    files: ['*.stories.*'],
     rules: {
-      "import/order": [
-        "error",
+      'import/order': [
+        'error',
         {
           named: true,
-          "newlines-between": "always",
+          'newlines-between': 'always',
           distinctGroup: true,
           warnOnUnassignedImports: true,
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "type",
-          ],
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'type'],
           pathGroups: [
             {
-              pattern: "@example/**",
-              group: "internal",
-              position: "before",
+              pattern: '@example/**',
+              group: 'internal',
+              position: 'before',
             },
           ],
-          alphabetize: { orderImportKind: "asc" },
+          alphabetize: { orderImportKind: 'asc' },
         },
       ],
     },

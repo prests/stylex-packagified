@@ -1,5 +1,5 @@
 {
-  "name": "demo--stylex-consumer",
+  "name": "demo--stylex-consumer-vite",
   "private": true,
   "description": "Demo stylex consuming in a CSR react app",
   "homepage": "https://github.com/prests/stylex-packagified/tree/main/packages/stylex-packagified",
@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/prests/stylex-packagified.git",
-    "directory": "demos/stylex-consumer"
+    "directory": "demos/stylex-consumer-vite"
   },
   "type": "module",
   "scripts": {
@@ -28,7 +28,7 @@
     "typecheck": "tsc -p ./tsconfig.json --noEmit",
     "____ CLEAN COMMANDS ____": "",
     "clean": "pnpm run clean:build && pnpm run clean:test",
-    "clean:build": "rimraf --glob ./dist ./legacy-types ./*.tgz",
+    "clean:build": "rimraf --glob ./dist",
     "clean:test": "rimraf --glob ./coverage"
   },
   "keywords": [
